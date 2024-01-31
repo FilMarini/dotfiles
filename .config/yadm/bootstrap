@@ -12,6 +12,7 @@ sudo apt update
 sudo apt install -y build-essential vim terminator git make zsh wget
 sudo snap install emacs
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # O-M-Z
+exit # O-M-Z installation enter a zsh shell
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
 
 # ZSH config files
@@ -23,3 +24,8 @@ for file in $ZSH_CUSTOM_ORIGIN/*.zsh; do
         ln -s $file $ZSH_CUSTOM_TARGET/$fileName
 done
 
+# O-M-Z Plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Restore user files
+yadm reset --hard
