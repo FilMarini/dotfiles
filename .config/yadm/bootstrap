@@ -11,7 +11,14 @@ yadm submodule update --recursive --init
 sudo apt update
 sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline
 sudo snap install emacs --classic
+
+# Spacemacs config
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
+cd $HOME/.emacs.d
+git remote add fork https://github.com/FilMarini/spacemacs.git
+git fetch fork
+git checkout vhdl-layer-dev
+
 
 # Install O-M-Z
 export RUNZSH=no
