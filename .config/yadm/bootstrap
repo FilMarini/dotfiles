@@ -9,8 +9,8 @@ yadm submodule update --recursive --init
 
 # Install useful stuff
 sudo apt update
-sudo apt install -y build-essential vim terminator git make zsh wget
-sudo snap install emacs
+sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline
+sudo snap install emacs --classic
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
 
 # Install O-M-Z

@@ -1,0 +1,20 @@
+[global_config]
+[keybindings]
+  split_horiz = <Shift><Alt>z
+  split_vert = <Alt>z
+  close_term = <Primary>w
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#839496"
+    scrollback_lines = 50000
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
