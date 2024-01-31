@@ -11,3 +11,13 @@ yadm submodule update --recursive --init
 sudo apt update
 sudo apt install -y build-essential vim terminator git make
 sudo snap install emacs
+
+# ZSH config files
+ZSH_CUSTOM_TARGET="$HOME/.oh-my-zsh/custom"
+ZSH_CUSTOM_ORIGIN="$HOME/.config/omz"
+
+for file in $ZSH_CUSTOM_ORIGIN/*.zsh; do
+        fileName=$(basename ${file})
+        ln -s $file $ZSH_CUSTOM_TARGET/$fileName
+done
+
