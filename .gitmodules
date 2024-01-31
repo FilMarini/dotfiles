@@ -1,0 +1,3 @@
+[submodule ".spacemacs.d/custom/bsc"]
+	path = .spacemacs.d/custom/bsc
+	url = https://github.com/B-Lang-org/bsc.git
