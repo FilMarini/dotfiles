@@ -14,10 +14,9 @@ sudo snap install emacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
 
 # Install O-M-Z
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-chmod +x install.sh
-./install.sh --unattended
-rm install.sh
+export RUNZSH=no
+export KEEP_ZSHRC=yes
+yes | sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # ZSH config files
 ZSH_CUSTOM_TARGET="$HOME/.oh-my-zsh/custom"
