@@ -16,7 +16,7 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
 # Install O-M-Z
 export RUNZSH=no
 export KEEP_ZSHRC=yes
-yes | sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # ZSH config files
 ZSH_CUSTOM_TARGET="$HOME/.oh-my-zsh/custom"
@@ -30,5 +30,3 @@ done
 # O-M-Z Plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Restore user files
-yadm reset --hard
