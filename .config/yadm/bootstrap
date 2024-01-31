@@ -9,8 +9,10 @@ yadm submodule update --recursive --init
 
 # Install useful stuff
 sudo apt update
-sudo apt install -y build-essential vim terminator git make
+sudo apt install -y build-essential vim terminator git make zsh wget
 sudo snap install emacs
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # O-M-Z
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d # Spacemacs
 
 # ZSH config files
 ZSH_CUSTOM_TARGET="$HOME/.oh-my-zsh/custom"
