@@ -9,7 +9,7 @@ yadm submodule update --recursive --init
 
 # Install useful stuff
 sudo apt update
-sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline
+sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline meld silversearcher-ag
 sudo snap install emacs --classic
 
 # Spacemacs config

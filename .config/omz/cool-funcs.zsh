@@ -49,13 +49,13 @@ bw-cp () {
 local name=$1
 local char_num=($(echo -n $name | wc -m));
 local items=$(bw list items --search $name | jq '.[] | select(.name | match("'$name'"; "i"))');
-local items_num=$(echo $items | jq -s '. | length');
+local items_num=$(echo -E $items | jq -s '. | length');
 if [[ $items_num -eq 1 ]]
 then
-    local passq=$(echo $items | jq '.login.password');
+    local passq=$(echo -E $items | jq '.login.password' | sed "s/\"/'/g");
 elif [[ $items_num -gt 1 ]]
 then
-    local passq=$(echo $items | jq '. | select(.name | length=='$char_num')' | jq '.login.password');
+    local passq=$(echo -E $items | jq '. | select(.name | length=='$char_num')' | jq '.login.password' | sed "s/\"/'/g" );
 else
     echo "Nothing found..."
 fi
