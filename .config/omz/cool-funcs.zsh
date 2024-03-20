@@ -111,9 +111,16 @@ osync-lxele02-start(){
 local confName=${1-sync.conf}
 local sshStatus=$(ssh -o BatchMode=yes -o ConnectTimeout=2 fmarini@lxele02.pd.infn.it echo ok 2>&1);
 if [[ $sshStatus == ok ]] ; then
-	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@lxele02.pd.infn.it:22\/\/home\/fmarini\/git\"/" $confName	
+	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@lxele02.pd.infn.it:22\/\/home\/fmarini\/git\"/" $confName
 else
-	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@localhost:8020\/\/home\/fmarini\/git\"/" $confName	
+	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@localhost:8020\/\/home\/fmarini\/git\"/" $confName
+  local sshRemStatus=$(ssh -o BatchMode=yes -o ConnectTimeout=2 fmarini@localhost -p8020 echo ok 2>&);
+  if [[ $sshRemStatus == ok ]] ; then
+    :
+  else
+    bw-cp infn.padova;
+    ssh -fN -L 8020:lxele02.pd.infn.it:22 fmarini@gate.pd.infn.it
+  fi
 fi
 osync-start;
 }
