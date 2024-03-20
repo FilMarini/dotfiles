@@ -96,3 +96,24 @@ lxele02-wipe-screens(){
 local cmd="screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill"
 ssh fmarini@localhost -p8020 "$cmd"
 }
+
+# OSYNC
+osync-start(){
+local confName=${1-sync.conf}
+osync.sh $confName --on-changes --silent &; disown
+}
+
+osync-stop(){
+ps -ef | grep 'osync' | grep -v grep | awk '{print $2}' | xargs -r kill
+}
+
+osync-lxele02-start(){
+local confName=${1-sync.conf}
+local sshStatus=$(ssh -o BatchMode=yes -o ConnectTimeout=2 fmarini@lxele02.pd.infn.it echo ok 2>&1);
+if [[ $sshStatus == ok ]] ; then
+	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@lxele02.pd.infn.it:22\/\/home\/fmarini\/git\"/" $confName	
+else
+	sed -i "16s/.*/TARGET_SYNC_DIR=\"ssh:\/\/fmarini@localhost:8020\/\/home\/fmarini\/git\"/" $confName	
+fi
+osync-start;
+}
