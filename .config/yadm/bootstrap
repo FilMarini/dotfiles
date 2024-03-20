@@ -4,12 +4,17 @@
 # be run from within $HOME (assuming this is the root of your dotfiles)
 cd "$HOME"
 
+# mkdir for sshfs
+mkdir sshfs
+mkdir sshfs/lxele02
+
 echo "Init submodules"
 yadm submodule update --recursive --init
 
 # Install useful stuff
 sudo apt update
-sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline meld silversearcher-ag
+sudo apt install -y build-essential vim terminator git make zsh wget fonts-powerline meld silversearcher-ag jq xclip sshfs
+sudo sap install bw
 sudo snap install emacs --classic
 
 # Spacemacs config
